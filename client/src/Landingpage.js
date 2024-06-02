@@ -36,11 +36,11 @@ const Landingpage = () => {
             <div className="item__layout">
                 <div className="flex-item">
                     <img className="item1" src='https://me-qr.com/data/front/static_preview/651415ebca4c28.80230463.png' />
-                    <p class="item-body">Admin site generation</p>
+                    <p class="item-body">Single QR Generation</p>
                     <p class="item-stat">Empower safety and connection with your personalized QR code. Swiftly connect in times of need for 
                     enhanced security.</p>
-                    <button className='button2'>
-                        <Link style={{ color: 'white', textDecoration: 'none' }} to='/generate'>Enter</Link>
+                    <button className='button2' style={{backgroundColor:'#333'}}>
+                        <Link style={{ color: 'white', textDecoration: 'none'}} to='/generate'>Enter</Link>
                     </button>
                 </div>
 
@@ -48,7 +48,7 @@ const Landingpage = () => {
                     <img className="item1" src='https://uniqode.wpengine.com/wp-content/uploads/2019/07/Bulk.png' />
                     <p class="item-body">Mass Generation QR</p>
                     <p class="item-stat">Enter the required number and generate the qr which are readymade to be printed when needed.</p>
-                    <button className='button2'>
+                    <button className='button2' style={{backgroundColor:'#333'}}>
                         <Link style={{ color: 'white', textDecoration: 'none' }} to='/massgen'>Enter</Link>
                     </button>
                 </div>
