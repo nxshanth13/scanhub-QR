@@ -9,7 +9,7 @@ import { faHandHoldingDollar, faBusinessTime, faTruckMedical, faLifeRing, faBolt
 import QR from './images/scan.jpg'
 import safety from './images/safety.jpg'
 import mission1 from './images/mission1.webp'
-import qrtest from './images/qrtest.jpg'
+import qrtest from './images/qrcard.jpeg'
 import Footer3 from './components/Footer3'
 
 const HomePage = () => {
@@ -42,9 +42,9 @@ const HomePage = () => {
         </div>
         <div className='imageUs'>
           <img src={mission1} />
-          <img src='' />
-          <img src='' />
-          <img src='' />
+          <img src='https://t4.ftcdn.net/jpg/03/09/57/65/360_F_309576547_Jxmy5JOuRH3fbmaximA6wERriBEqxPW7.jpg' />
+          <img src='https://t3.ftcdn.net/jpg/05/62/81/44/360_F_562814486_ajlpRlDIoOkXK9FNxJr2W6caswQWDRGM.jpg' />
+          <img src='https://media.istockphoto.com/id/1293501978/vector/progress-development-as-success-improvement-and-growth-tiny-person-concept-professional.jpg?s=612x612&w=0&k=20&c=cSMUAGdB2D-Yah-5m6I-yC29cGYm74h8HP85054Li0E=' />
         </div>
       </section>
       <section className='howItWorks'>
