@@ -1,10 +1,18 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
 import call from "./images/call.webp";
 import ambulance from "./images/ambulance.png";
+import conversation from "./images/conversation.png";
+import cross from "./images/cross.webp";
+import card from "./images/card.png";
+import download from "./images/download.png";
+import history from "./images/history.png";
 import update from "./images/update.png";
+import logo from './images/logo2.png'
+import flanzer1 from './images/flanzer1.png'
 import siren from './images/siren.png'
 import gif from './images/loading.gif'
 
@@ -22,7 +30,7 @@ function QRCodeScanner() {
   const { uniqueNumber } = useParams();
   const [infoData, setInfoData] = useState({
     personName: "",
-    age: "",
+    age:"",
     gender: "",
     bloodGroup: "",
     phoneNumber: "",
@@ -35,10 +43,10 @@ function QRCodeScanner() {
     doctor: "",
   });
 
-  setTimeout(() => {
+  setTimeout(()=>{
     const gif = document.getElementById('loading-gif')
     gif.style.display = 'none'
-  }, 1000)
+  },1000)
 
   const fetchUserDetails = async () => {
     try {
@@ -46,7 +54,7 @@ function QRCodeScanner() {
         `https://scanhubgen.vercel.app/user-details/${uniqueNumber}`
       );
       const user = response.data.user.userDetails;
-
+      
       var existsInDB = true;
       if (user.address === "") {
         existsInDB = false;
@@ -82,9 +90,9 @@ function QRCodeScanner() {
     setInfoData(e)
     console.log(infoData)
     setShowConfirmationModal(true);
-    setTimeout(() => {
+    setTimeout(()=>{
       window.scrollTo(0, 2180);
-    }, 500)
+    },500)
   };
 
   const handleSubmit = async () => {
@@ -145,12 +153,12 @@ function QRCodeScanner() {
   };
 
   return (
-    <div style={{ overflow: "hidden", minHeight: '100vh' }}>
-      <nav className="navbar" style={{ backgroundColor: '#333', padding: '6px', display: 'flex', alignItems: 'center', zIndex: '100', justifyContent: 'center', position: 'sticky', top: '0', flexDirection: 'column', boxShadow: "0 0 10px rgba(255, 255, 0, 0.9)", }}>
-        <div className="left-section">
-          <h1 style={{ padding: '30px 0' }}>ScanHubGen</h1>
-        </div>
-        {/* <div style={{ display: 'flex', marginLeft: '10px', display: 'inline-block' }}>
+    <div style={{ overflow: "hidden",minHeight:'100vh' }}>
+      <nav className="navbar" style={{ backgroundColor: '#333', padding: '6px',display:'flex', alignItems:'center',zIndex:'100', justifyContent:'center',position:'sticky',top:'0',flexDirection:'column',boxShadow: "0 0 10px rgba(255, 255, 0, 0.9)", }}>
+          <div className="left-section">
+            <h1 style={{padding:'30px 0'}}>ScanHubGen</h1>
+          </div>
+          {/* <div style={{ display: 'flex', marginLeft: '10px', display: 'inline-block' }}>
               <span className="powered-by">
               <Link style={{ color: 'white', textDecoration: 'none', fontSize: '11px' }} target="_blank" to='https://www.theflanzer.com/'>
                   supported by</Link></span>
@@ -158,13 +166,13 @@ function QRCodeScanner() {
           </div> */}
       </nav>
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '200px 0' }} id="loading-gif">
-        <img src={gif} style={{ width: '50px', height: '50px' }} />
+      <div style={{display:'flex',alignItems:'center',justifyContent:'center',margin:'200px 0'}} id="loading-gif">
+        <img src={gif}  style={{width:'50px',height:'50px'}} />
       </div>
 
       {error && <p>{error}</p>}
       {userDetails && (
-        <div id="printable-content" style={{ overflow: "hidden", backgroundColor: 'black' }}>
+        <div id="printable-content" style={{ overflow: "hidden", backgroundColor:'black' }}>
           <div
             className="showdetails"
             style={{
@@ -173,7 +181,7 @@ function QRCodeScanner() {
               backgroundColor: 'black',
             }}
           >
-            <h3 style={{ color: 'red', textAlign: 'center' }}>Expire date : {expDate}</h3>
+            <h3 style={{color:'red',textAlign:'center'}}>Expire date : {expDate}</h3>
             <form>
               <div
                 style={{
@@ -209,20 +217,20 @@ function QRCodeScanner() {
               <p style={{ color: "white", fontSize: "18px", marginTop: "8px" }}>
                 {userDetails.personName}
               </p>
-              <p style={{ color: '#E42A3C' }}><b >Blood Group : {userDetails.bloodGroup}</b></p>
+                <p style={{color:'#E42A3C'}}><b >Blood Group : {userDetails.bloodGroup}</b></p>
               <p
-                style={{
-                  color: "white",
-                  fontSize: "18px",
-                  marginTop: "30px",
-                  backgroundColor: "#E42A3C",
-                  paddingTop: "5px",
-                  paddingBottom: "5px",
-                  letterSpacing: "1px",
-                }}
-              >
-                Quick Calls
-              </p>
+                  style={{
+                    color: "white",
+                    fontSize: "18px",
+                    marginTop: "30px",
+                    backgroundColor: "#E42A3C",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
+                    letterSpacing: "1px",
+                  }}
+                >
+                  Quick Calls
+                </p>
 
               <div style={{ marginTop: "15px" }}>
                 <a href="tel:112">
@@ -256,7 +264,7 @@ function QRCodeScanner() {
                       height: "50px",
                       width: "50px",
                       objectFit: "cover",
-                      borderRadius: '50%',
+                      borderRadius:'50%',
                       paddingLeft: "5px",
                     }}
                     src={siren}
@@ -303,7 +311,7 @@ function QRCodeScanner() {
                   style={{
                     color: "white",
                     fontSize: "18px",
-                    backgroundColor: '#FF782D',
+                    backgroundColor:'#FF782D',
                     paddingTop: "5px",
                     paddingBottom: "5px",
                     letterSpacing: "1px",
@@ -322,7 +330,7 @@ function QRCodeScanner() {
                     letterSpacing: "1px",
                   }}
                 >
-                  <p><b>Disease:</b> {userDetails.disease === "" ? "Nil" : userDetails.bloodGroup}</p>
+                  <p><b>Disease:</b> {userDetails.disease === "" ? "Nil" : userDetails.disease}</p>
                   <p><b>Allegries:</b> {userDetails.disease === "" ? "Nil" : userDetails.allergies}</p>
                   <p style={{ marginTop: "20px" }}>
                     <b>Regular hospital:</b> {userDetails.disease === "" ? "Nil" : userDetails.regularHospital}
@@ -348,14 +356,14 @@ function QRCodeScanner() {
                 Download This Page
               </button>
 
-              <p style={{ margin: '20px auto', color: 'white', fontSize: '10px' }}><i>*For any changes contact Rayyanscan</i></p>
+              <p style={{margin:'20px auto',color:'white',fontSize:'10px'}}><i>*For any changes contact Rayyanscan</i></p>
 
             </form>
           </div>
         </div>
       )}
       {showInfoPrompt && <InfoPrompt onSubmit={handleInfoSubmit} />}
-      {showConfirmationModal &&
+      {showConfirmationModal && 
         <ConfirmationModal
           infoData={infoData}
           onClose={() => setShowConfirmationModal(false)}
@@ -371,7 +379,7 @@ function InfoPrompt({ onSubmit }) {
   const [infoData, setInfoData] = useState({
     personName: "",
     gender: "",
-    age: "",
+    age:"",
     bloodGroup: "",
     phoneNumber: "",
     emergencyNumber: "",
@@ -416,7 +424,7 @@ function InfoPrompt({ onSubmit }) {
   };
 
   return (
-    <div style={{ padding: '15px' }}>
+    <div style={{padding:'15px'}}>
       <div
         style={{
           display: "flex",
@@ -435,7 +443,7 @@ function InfoPrompt({ onSubmit }) {
 
         <div id="details-container">
           <p className="head1">
-            <span style={{ color: '#E42A3C', fontWeight: '400', fontSize: '23px' }}>*</span>Please do read through instructions and
+          <span style={{color:'#E42A3C',fontWeight:'400',fontSize:'23px'}}>*</span>Please do read through instructions and
             fill in the form below to ensure your information is securely
             stored.{" "}
           </p>
@@ -469,7 +477,7 @@ function InfoPrompt({ onSubmit }) {
             </ul>
           </div>
         </div>
-        <div className="container" style={{ width: '100%', padding: '0' }}>
+        <div className="container" style={{width:'100%',padding:'0'}}>
           <div
             style={{
               display: "flex",
@@ -484,7 +492,7 @@ function InfoPrompt({ onSubmit }) {
           </div>
           <form>
             <label className="label" htmlFor="Name">
-              Profile Picture<span style={{ color: '#E42A3C', fontWeight: '400', fontSize: '15px' }}>*</span>
+              Profile Picture<span style={{color:'#E42A3C',fontWeight:'400',fontSize:'15px'}}>*</span>
             </label>
             <div
               style={{
@@ -492,7 +500,7 @@ function InfoPrompt({ onSubmit }) {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 justifyContent: "center",
-                margin: '15px 0'
+                margin:'15px 0'
               }}
             >
               <input
@@ -511,13 +519,13 @@ function InfoPrompt({ onSubmit }) {
                   padding: "6px",
                   borderRadius: "10px",
                   cursor: "pointer",
-                  fontSize: '13px',
-                  display: 'flex',
-                  columnGap: '10px'
+                  fontSize:'13px',
+                  display:'flex',
+                  columnGap:'10px'
                 }}
               >
-                <img src={update} alt="update" style={{ width: "20px", height: "20px", margin: 'auto 0' }} />
-                Update Profile Picture
+                <img src={update} alt="update" style={{ width: "20px", height: "20px",margin:'auto 0' }} /> 
+                Update Profile Picture 
               </label>
               {infoData.profileImage && (
                 <div
@@ -538,7 +546,7 @@ function InfoPrompt({ onSubmit }) {
             </div>
 
             <label className="label" htmlFor="Name">
-              Full Name<span style={{ color: '#E42A3C', fontWeight: '400', fontSize: '15px' }}>*</span>
+              Full Name<span style={{color:'#E42A3C',fontWeight:'400',fontSize:'15px'}}>*</span>
             </label>
             <input
               className="input-field"
@@ -551,7 +559,7 @@ function InfoPrompt({ onSubmit }) {
             />
 
             <label className="label" htmlFor="Age">
-              Age<span style={{ color: '#E42A3C', fontWeight: '400', fontSize: '15px' }}>*</span>
+              Age<span style={{color:'#E42A3C',fontWeight:'400',fontSize:'15px'}}>*</span>
             </label>
             <input
               className="input-field"
@@ -564,7 +572,7 @@ function InfoPrompt({ onSubmit }) {
             />
 
             <label className="label" htmlFor="gender">
-              Gender<span style={{ color: '#E42A3C', fontWeight: '400', fontSize: '15px' }}>*</span>
+            Gender<span style={{color:'#E42A3C',fontWeight:'400',fontSize:'15px'}}>*</span>
             </label>
             <select
               className="select-field"
@@ -581,7 +589,7 @@ function InfoPrompt({ onSubmit }) {
             </select>
 
             <label className="label" htmlFor="Primary">
-              Contact No<span style={{ color: '#E42A3C', fontWeight: '400', fontSize: '15px' }}>*</span>
+            Contact No<span style={{color:'#E42A3C',fontWeight:'400',fontSize:'15px'}}>*</span>
             </label>
             <input
               className="input-field"
@@ -594,7 +602,7 @@ function InfoPrompt({ onSubmit }) {
             />
 
             <label className="label" htmlFor="Secondary">
-              Emergency contact<span style={{ color: '#E42A3C', fontWeight: '400', fontSize: '15px' }}>*</span>
+              Emergency contact<span style={{color:'#E42A3C',fontWeight:'400',fontSize:'15px'}}>*</span>
             </label>
             <input
               className="input-field"
@@ -607,7 +615,7 @@ function InfoPrompt({ onSubmit }) {
             />
 
             <label className="label" htmlFor="group">
-              Blood Group<span style={{ color: '#E42A3C', fontWeight: '400', fontSize: '15px' }}>*</span>
+              Blood Group<span style={{color:'#E42A3C',fontWeight:'400',fontSize:'15px'}}>*</span>
             </label>
             <select
               className="select-field"
@@ -656,7 +664,7 @@ function InfoPrompt({ onSubmit }) {
 
             <div>
               <label className="label" htmlFor="disease">
-                Disease <span style={{ color: 'green', fontWeight: '400', fontSize: '10px' }}>optional</span>
+                Disease<span style={{color:'green',fontWeight:'400',fontSize:'10px'}}>optional</span>
               </label>
               <textarea
                 className="textarea-field"
@@ -665,7 +673,7 @@ function InfoPrompt({ onSubmit }) {
                 onChange={handleInputChange}
               />
               <label className="label" htmlFor="allegry">
-                Allegries <span style={{ color: 'green', fontWeight: '400', fontSize: '10px' }}>optional</span>
+                Allegries<span style={{color:'green',fontWeight:'400',fontSize:'10px'}}>optional</span>
               </label>
               <textarea
                 className="textarea-field"
@@ -674,7 +682,7 @@ function InfoPrompt({ onSubmit }) {
                 onChange={handleInputChange}
               />
               <label className="label" htmlFor="hospital">
-                Regular Hospital <span style={{ color: 'green', fontWeight: '400', fontSize: '10px' }}>optional</span>
+                Regular Hospital<span style={{color:'green',fontWeight:'400',fontSize:'10px'}}>optional</span>
               </label>
               <textarea
                 className="textarea-field"
@@ -683,7 +691,7 @@ function InfoPrompt({ onSubmit }) {
                 onChange={handleInputChange}
               />
               <label className="label" htmlFor="doctor">
-                Doctor <span style={{ color: 'green', fontWeight: '400', fontSize: '10px' }}>optional</span>
+                Doctor<span style={{color:'green',fontWeight:'400',fontSize:'10px'}}>optional</span>
               </label>
               <textarea
                 className="textarea-field"
