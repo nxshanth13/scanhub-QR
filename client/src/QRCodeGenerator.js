@@ -1,3 +1,4 @@
+
 // frontend/src/components/QRCodeGenerator.js
 
 import React, { useState } from 'react';
@@ -40,6 +41,11 @@ function QRCodeGenerator() {
           gender: gender,
           address: address,
           bloodGroup: bloodGroup,
+          disease: disease,
+          allergies: allergies,
+          regularHospital: regularHospital,
+          doctor: doctor,
+          age: age,
         },
       });
       console.log(response)
@@ -76,7 +82,7 @@ function QRCodeGenerator() {
       <NavbarMain />
       <div className='container'>
         <div className='header'>
-          <h1 style={{ textAlign: 'center', fontFamily: 'Arial' }}>QR Generator - Provide Details</h1>
+          <h1 style={{ textAlign: 'center', fontFamily:'Arial'}}>QR Generator - Provide Details</h1>
           <hr style={{ height: '2px', backgroundColor: 'black', border: 'none' }} />
         </div>
         <div style={{ marginTop: '5px' }}>
@@ -91,7 +97,7 @@ function QRCodeGenerator() {
             value={uniqueIdentifier}
             onChange={(e) => setUniqueIdentifier(e.target.value)}
           />
-          <button onClick={generateRandomString}>Random Generator</button>
+          <button onClick={generateRandomString} style={{padding:'7px 13px', border:'1px solid rgba(0,0,0,0.5)', cursor:'pointer', borderRadius:'15px'}}>Random Generator</button>
         </div>
         <div style={{ marginTop: '5px' }}>
           <label className="label" htmlFor="Name">
@@ -104,6 +110,20 @@ function QRCodeGenerator() {
             name="Name"
             value={personName}
             onChange={(e) => setPersonName(e.target.value)}
+          />
+        </div>
+
+        <div style={{ marginTop: '5px' }}>
+          <label className="label" htmlFor="Name">
+            Age
+          </label>
+          <input
+            className="input-field"
+            type="text"
+            placeholder="Age..."
+            name="Age"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
           />
         </div>
 
@@ -172,64 +192,70 @@ function QRCodeGenerator() {
             placeholder="Enter Address"
             value={address}
             rows={"6"}
-            style={{ width: "100%", resize: 'none', paddingLeft: '5px', border: '1px solid rgba(0,0,0,0.3)', borderRadius: '5px' }}
+            style={{width:"100%",resize:'none',paddingLeft:'5px',border:'1px solid rgba(0,0,0,0.3)',borderRadius:'5px'}}
             onChange={(e) => setAddress(e.target.value)}
           ></textarea>
         </div>
 
-        <div style={{ marginTop: "10px" }}>
-          <label className="label" htmlFor="Secondary">
-            Disease <span style={{ color: 'green', fontWeight: '400', fontSize: '10px' }}>optional</span>
+        <hr style={{margin:'30px 0'}} />
+
+        <div style={{ marginTop: '5px' }}>
+          <label className="label" htmlFor="Name">
+            Disease
           </label>
           <input
             className="input-field"
             type="text"
-            name="disease"
+            placeholder="Disease..."
+            name="Disease"
             value={disease}
             onChange={(e) => setDisease(e.target.value)}
           />
         </div>
 
-        <div>
-          <label className="label" htmlFor="Secondary">
-            Allegries <span style={{ color: 'green', fontWeight: '400', fontSize: '10px' }}>optional</span>
+        <div style={{ marginTop: '5px' }}>
+          <label className="label" htmlFor="Name">
+            Allegries
           </label>
           <input
             className="input-field"
             type="text"
-            name="allergies"
+            placeholder="Allergies..."
+            name="Allergies"
             value={allergies}
             onChange={(e) => setAllergies(e.target.value)}
           />
         </div>
 
-        <div>
-          <label className="label" htmlFor="Secondary">
-            Regular Hospital <span style={{ color: 'green', fontWeight: '400', fontSize: '10px' }}>optional</span>
+        <div style={{ marginTop: '5px' }}>
+          <label className="label" htmlFor="Name">
+            Regular Hospital
           </label>
           <input
             className="input-field"
             type="text"
-            name="regularHospital"
+            placeholder="Regular Hospital..."
+            name="RegularHospital"
             value={regularHospital}
             onChange={(e) => setRegularHospital(e.target.value)}
           />
         </div>
 
-        <div>
-          <label className="label" htmlFor="Secondary">
-            Doctor <span style={{ color: 'green', fontWeight: '400', fontSize: '10px' }}>optional</span>
+        <div style={{ marginTop: '5px' }}>
+          <label className="label" htmlFor="Name">
+            Regular Doctor
           </label>
           <input
             className="input-field"
             type="text"
-            name="doctor"
+            placeholder="Doctor..."
+            name="Doctor"
             value={doctor}
             onChange={(e) => setDoctor(e.target.value)}
           />
         </div>
 
-        <button className="button" type="button" style={{ marginTop: '20px' }} onClick={handleGenerateQRCode}>
+        <button className="button" type="button" style={{marginTop:'20px'}} onClick={handleGenerateQRCode}>
           Generate QR
         </button>
 
